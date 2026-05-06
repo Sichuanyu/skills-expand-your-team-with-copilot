@@ -661,6 +661,202 @@ footer {
   border-radius: 20px;
 }
 
-#logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+
+/* ── View Toggle Bar ──────────────────────────────────────────────────────── */
+.view-toggle-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
 }
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-toggle-btn.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary-dark);
+}
+
+.view-toggle-btn:hover:not(.active) {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+/* ── Calendar Mode override on activities-list ───────────────────────────── */
+#activities-list.calendar-mode {
+  display: block;
+  overflow-x: auto;
+}
+
+/* ── Calendar View ───────────────────────────────────────────────────────── */
+.calendar-view {
+  min-width: 560px;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.calendar-header {
+  display: flex;
+  padding-left: 50px; /* align with time-label column */
+  border-bottom: 2px solid var(--border);
+}
+
+.cal-time-col-header {
+  /* spacer that matches .cal-time-col width */
+  display: none;
+}
+
+.cal-day-header {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+  padding: 5px 2px;
+  font-size: 0.78rem;
+  border-left: 1px solid var(--border-light);
+}
+
+.cal-day-header:first-of-type {
+  border-left: none;
+}
+
+.calendar-body {
+  display: flex;
+  position: relative;
+}
+
+.cal-time-col {
+  width: 50px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.cal-time-label {
+  position: absolute;
+  right: 6px;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.cal-grid {
+  flex: 1;
+  display: flex;
+  position: relative;
+  border: 1px solid var(--border-light);
+  border-top: none;
+}
+
+.cal-day-column {
+  flex: 1;
+  position: relative;
+  border-left: 1px solid var(--border-light);
+  min-width: 70px;
+}
+
+.cal-day-column:first-child {
+  border-left: none;
+}
+
+.cal-hour-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--border-light);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cal-half-hour-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--border-light);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cal-activity {
+  position: absolute;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 2px 4px;
+  transition: filter 0.15s ease;
+  z-index: 1;
+}
+
+.cal-activity:hover {
+  filter: brightness(0.88);
+  z-index: 10;
+}
+
+.cal-activity-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cal-activity-name {
+  font-size: 0.68rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.cal-activity-enrollment {
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+.cal-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+/* ── Calendar hover tooltip (fixed-position, never clipped) ──────────────── */
+#cal-tooltip {
+  position: fixed;
+  background-color: rgba(26, 35, 126, 0.96);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  max-width: 280px;
+  z-index: 3000;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  line-height: 1.55;
+}
+
+#cal-tooltip p {
+  margin: 3px 0;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#cal-tooltip strong {
+  color: white;
+}
+
