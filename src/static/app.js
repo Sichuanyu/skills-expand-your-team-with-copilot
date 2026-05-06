@@ -610,7 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activitiesList.appendChild(activityCard);
   }
 
-  // ── Calendar View ──────────────────────────────────────────────────────────
+  // === Calendar View ============================================================
 
   // Convert "HH:MM" string to total minutes from midnight
   function timeToMins(timeStr) {
@@ -677,9 +677,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Render the full weekly calendar view
   function renderCalendarView(filteredActivities) {
-    const calStartHour = 6; // 6 AM
-    const calEndHour = 21; // 9 PM
-    const hourHeight = 64; // px per hour
+    const calStartHour = 6;     // first hour shown (6 AM)
+    const calEndHour = 21;      // last hour shown (9 PM)
+    const hourHeight = 64;      // px per hour in the grid
+    const minEntryHeight = 22;  // minimum height (px) for very short activities
     const totalHeight = (calEndHour - calStartHour) * hourHeight;
     const days = [
       "Sunday",
@@ -738,7 +739,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const top = ((startMins - calStartHour * 60) / 60) * hourHeight;
         const height = Math.max(
           ((endMins - startMins) / 60) * hourHeight,
-          22
+          minEntryHeight
         );
         const widthPct = 100 / numCols;
         const leftPct = col * widthPct;
@@ -843,7 +844,7 @@ document.addEventListener("DOMContentLoaded", () => {
     calTooltip.style.top = `${y}px`;
   }
 
-  // ── End Calendar View ──────────────────────────────────────────────────────
+  // === End Calendar View ========================================================
 
   // Event listeners for search and filter
   searchInput.addEventListener("input", (event) => {

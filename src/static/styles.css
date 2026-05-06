@@ -662,7 +662,7 @@ footer {
 }
 
 
-/* ── View Toggle Bar ──────────────────────────────────────────────────────── */
+/* === View Toggle Bar === */
 .view-toggle-bar {
   display: flex;
   gap: 8px;
@@ -695,13 +695,13 @@ footer {
   color: white;
 }
 
-/* ── Calendar Mode override on activities-list ───────────────────────────── */
+/* === Calendar Mode override on activities-list === */
 #activities-list.calendar-mode {
   display: block;
   overflow-x: auto;
 }
 
-/* ── Calendar View ───────────────────────────────────────────────────────── */
+/* === Calendar View === */
 .calendar-view {
   min-width: 560px;
   font-size: 0.8rem;
@@ -836,7 +836,7 @@ footer {
   color: var(--text-secondary);
 }
 
-/* ── Calendar hover tooltip (fixed-position, never clipped) ──────────────── */
+/* === Calendar hover tooltip (fixed-position, never clipped) === */
 #cal-tooltip {
   position: fixed;
   background-color: rgba(26, 35, 126, 0.96);
